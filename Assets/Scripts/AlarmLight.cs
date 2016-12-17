@@ -3,13 +3,39 @@ using System.Collections;
 
 public class AlarmLight : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    
+    public float fadeSpeed = 2f;
+    public float highIntensity = 2f;
+    public float lowIntensity = 0.5f;
+    public float changeMargin = 0.2f;
+    public bool alarmOn;
+
+    private Light redLight;
+    private float targetIntensity;
+
+    void Awake()
+    {
+        redLight = GetComponent<Light>();
+
+        redLight.intensity = 0f;
+        targetIntensity = highIntensity;
+    }
+
+    void Update()
+    {
+        if (alarmOn)
+        {
+            redLight.intensity = Mathf.Lerp(redLight.intensity, targetIntensity, fadeSpeed * Time.deltaTime);
+            checkTargetIntensity();
+        }
+    }
+
+    void checkTargetIntensity()
+    {
+        if (Mathf.Abs(targetIntensity - redLight.intensity) < changeMargin)
+        {
+            targetIntensity = (targetIntensity == highIntensity) ? lowIntensity : highIntensity;
+            Debug.Log("TargetIntensity: " + targetIntensity);
+        }
+    }
 }

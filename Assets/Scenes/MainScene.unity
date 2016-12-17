@@ -207,6 +207,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 681847367}
   - 108: {fileID: 681847366}
+  - 114: {fileID: 681847368}
   m_Layer: 0
   m_Name: light_alarm_directional
   m_TagString: AlarmLight
@@ -260,6 +261,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &681847368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 681847365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e16d3d0f684e4f41a069442758e9baf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeSpeed: 2
+  highIntensity: 2
+  lowIntensity: 0.5
+  changeMargin: 0.2
+  alarmOn: 0
 --- !u!1 &1003209631
 GameObject:
   m_ObjectHideFlags: 0
