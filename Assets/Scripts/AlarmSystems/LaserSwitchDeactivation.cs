@@ -19,7 +19,7 @@ public class LaserSwitchDeactivation : MonoBehaviour {
         {
             if (Input.GetButton ("Switch"))
             {
-
+                LaserDeactivation();
             }
         }
     }

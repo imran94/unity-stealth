@@ -11,6 +11,7 @@ public class LaserPlayerDetection : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag(Tags.player);
         lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
+        renderer = gameObject.GetComponent<MeshRenderer>();
     }
 
     private void OnTriggerStay(Collider other)

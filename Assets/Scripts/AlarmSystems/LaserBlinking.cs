@@ -5,9 +5,16 @@ using UnityEngine;
 public class LaserBlinking : MonoBehaviour {
     public float onTime;
     public float offTime;
+
     private float timer;
-    private Renderer renderer;
+    private MeshRenderer renderer;
     private Light light;
+
+    void Awake()
+    {
+        renderer = gameObject.GetComponent<MeshRenderer>();
+        light = gameObject.GetComponent<Light>();
+    }
 
     private void Update()
     {
