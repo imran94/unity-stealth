@@ -106,7 +106,7 @@ Animator:
   m_GameObject: {fileID: 110228661}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f7db6b30ed2654149872617050caa7ff, type: 2}
+  m_Controller: {fileID: 9100000, guid: 94a9c683eb93c8c4ea9d5e38565c6592, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1244,6 +1244,11 @@ Prefab:
       propertyPath: m_Name
       value: prop_cctvCam_002
       objectReference: {fileID: 0}
+    - target: {fileID: 108687377610538450, guid: 19819c2c957f1e9499f86708eb964135,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19819c2c957f1e9499f86708eb964135, type: 2}
   m_IsPrefabParent: 0
@@ -1373,6 +1378,11 @@ Prefab:
     - target: {fileID: 1540846758663588, guid: 19819c2c957f1e9499f86708eb964135, type: 2}
       propertyPath: m_Name
       value: prop_cctvCam_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 108687377610538450, guid: 19819c2c957f1e9499f86708eb964135,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19819c2c957f1e9499f86708eb964135, type: 2}
@@ -2027,6 +2037,11 @@ Prefab:
     - target: {fileID: 4008144155194160, guid: 19819c2c957f1e9499f86708eb964135, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 108687377610538450, guid: 19819c2c957f1e9499f86708eb964135,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19819c2c957f1e9499f86708eb964135, type: 2}
