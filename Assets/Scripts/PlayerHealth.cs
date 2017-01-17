@@ -66,7 +66,8 @@ public class PlayerHealth : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (timer >= resetAfterDeathTime)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void TakeDamage(float amount)

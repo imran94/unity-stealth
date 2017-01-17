@@ -29,15 +29,20 @@ public class EnemyAnimation : MonoBehaviour
         deadZone *= Mathf.Deg2Rad;
 
     }
-
+    bool delt = false;
     private void Update()
     {
         NavAnimSetup();
+
+        if (!delt)
+            delt = true;
     }
 
     private void OnAnimatorMove()
     {
-        nav.velocity = anim.deltaPosition / Time.deltaTime;
+        if (!delt) return;
+
+        //nav.velocity = anim.deltaPosition / Time.deltaTime;
         transform.rotation = anim.rootRotation;
     }
 

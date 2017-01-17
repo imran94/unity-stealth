@@ -67,11 +67,13 @@ public class EnemySight : MonoBehaviour
             {
                 RaycastHit hit;
 
-                if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, sphereCol.radius)
-                    && hit.collider == player)
+                if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, sphereCol.radius))
                 {
-                    playerInSight = true;
-                    lastPlayerSighting.position = player.transform.position;
+                    if (hit.collider.gameObject == player)
+                    {
+                        playerInSight = true;
+                        lastPlayerSighting.position = player.transform.position;
+                    }
                 }
             }
 
