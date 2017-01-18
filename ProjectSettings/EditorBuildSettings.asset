@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Done/DoneScenes/DoneStealth.unity
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Scene 2.unity
