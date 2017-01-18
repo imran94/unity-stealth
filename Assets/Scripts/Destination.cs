@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Destination : MonoBehaviour {
-
+    public GameObject menu;
     private GameObject player;
 
     private void Awake()
@@ -21,6 +22,8 @@ public class Destination : MonoBehaviour {
         if (other.gameObject == player)
         {
             Debug.Log("Player entered");
+            menu.SetActive(true);
+            //Time.timeScale = 0;
         }
     }
 }
