@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Destination : MonoBehaviour {
 
@@ -20,7 +21,7 @@ public class Destination : MonoBehaviour {
     {
         if (other.gameObject == player)
         {
-            Debug.Log("Player entered");
+            SceneManager.LoadScene(0);
         }
     }
 }
