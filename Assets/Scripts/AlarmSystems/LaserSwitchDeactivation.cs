@@ -6,11 +6,13 @@ public class LaserSwitchDeactivation : MonoBehaviour {
     public GameObject laser;
     public Material unlockedMat;
     private GameObject player;
+    private LastPlayerSighting playerSighting;
     private Renderer screenRend;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag(Tags.player);
+        playerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
     }
 
     private void OnTriggerStay(Collider other)
@@ -31,6 +33,6 @@ public class LaserSwitchDeactivation : MonoBehaviour {
         screenRend = transform.Find("prop_switchUnit_screen").GetComponent<Renderer>();
         screenRend.material = unlockedMat;
         GetComponent<AudioSource>().Play();
-
+        playerSighting.ResetPosition();
     }
 }

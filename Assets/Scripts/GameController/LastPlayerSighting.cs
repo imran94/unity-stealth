@@ -89,4 +89,9 @@ public class LastPlayerSighting : MonoBehaviour {
             panicAudio.volume = Mathf.Lerp(panicAudio.volume, 0f, musicFadeSpeed * Time.deltaTime);
         }
     }
+
+    public void ResetPosition()
+    {
+        position = resetPosition;
+    }
 }
