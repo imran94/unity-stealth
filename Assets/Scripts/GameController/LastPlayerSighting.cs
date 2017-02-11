@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LastPlayerSighting : MonoBehaviour {
@@ -37,9 +36,6 @@ public class LastPlayerSighting : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
         SwitchAlarms();
         MusicFade();
     }

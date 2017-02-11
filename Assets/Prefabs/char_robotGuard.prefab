@@ -1772,7 +1772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b237ea73e45f11458aa7a8e8bf304ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotClip: {fileID: 0}
+  shotClip: {fileID: 8300000, guid: 0af3d513283ae634480aa98a0d2da839, type: 3}
   maxDamage: 120
   minDamage: 45
   flashIntensity: 3

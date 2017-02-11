@@ -11,6 +11,9 @@ TagManager:
   - WayPoint
   - Siren
   - Alarm
+  - Gun
+  - PauseMenu
+  - MusicButton
   layers:
   - Default
   - TransparentFX

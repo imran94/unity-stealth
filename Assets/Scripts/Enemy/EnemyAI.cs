@@ -17,6 +17,7 @@ public class EnemyAI : MonoBehaviour {
     private Transform player;
     private PlayerHealth playerHealth;
     private LastPlayerSighting lastPlayerSighting;
+
     private float chaseTimer;
     private float patrolTimer;
     private int waypointIndex;

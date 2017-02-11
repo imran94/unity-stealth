@@ -15,6 +15,5 @@ public class RadarCamera : MonoBehaviour {
     private void LateUpdate()
     {
         transform.position = new Vector3(target.position.x, transform.position.y, target.position.z);
-        Debug.Log("Update RadarCamera: " + transform.position);
     }
 }
