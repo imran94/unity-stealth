@@ -7,7 +7,6 @@ public class ItemPickup : MonoBehaviour
     public GameObject pickup;
     private GameObject player;
 
-
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag(Tags.player);
@@ -28,5 +27,7 @@ public class ItemPickup : MonoBehaviour
     {
         pickup.SetActive(false);
         Debug.Log("Item Picked Up");
+        Destroy(pickup);
+        //update score
     }
 }
