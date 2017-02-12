@@ -28,6 +28,5 @@ public class ItemPickup : MonoBehaviour
         pickup.SetActive(false);
         Debug.Log("Item Picked Up");
         Destroy(pickup);
-        //update score
     }
 }
