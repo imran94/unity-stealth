@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour {
     void Chasing()
     {
         Vector3 sightingDeltaPos = enemySight.personalLastSighting - transform.position;
-        if (sightingDeltaPos.sqrMagnitude > 4f)
+        if (sightingDeltaPos.sqrMagnitude > 1f)
             nav.destination = enemySight.personalLastSighting;
 
         nav.speed = chaseSpeed;
@@ -59,7 +59,7 @@ public class EnemyAI : MonoBehaviour {
         {
             chaseTimer += Time.deltaTime;
 
-            if (chaseTimer > chaseWaitTime)
+            if (chaseTimer >= chaseWaitTime)
             {
                 lastPlayerSighting.position = lastPlayerSighting.resetPosition;
                 enemySight.personalLastSighting = lastPlayerSighting.resetPosition;

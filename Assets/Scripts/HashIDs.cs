@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HashIDs : MonoBehaviour {
 
-    public int dyingState, locomotionState, shoutState;
+    public int dyingState, locomotionState, shoutState, weaponShootState;
     public int deadBool, sneakingBool, shoutingBool, playerInSightBool, openBool, shootingBool;
     public int speedFloat, shotFloat, aimWeightFloat, angularSpeedFloat;
 
@@ -12,6 +12,7 @@ public class HashIDs : MonoBehaviour {
         dyingState = Animator.StringToHash("Base Layer.Dying");
         locomotionState = Animator.StringToHash("Base Layer.Locomotion");
         shoutState = Animator.StringToHash("Shouting.Shout");
+        weaponShootState = Animator.StringToHash("Shooting.WeaponShoot");
 
         deadBool = Animator.StringToHash("Dead");
         sneakingBool = Animator.StringToHash("Sneaking");
