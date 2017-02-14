@@ -9,7 +9,8 @@ public class LastPlayerSighting : MonoBehaviour {
     public float lightHighIntensity = 0.25f;
     public float lightLowIntensity = 0f;
     public float fadeSpeed = 7f;
-    public float musicFadeSpeed = 1f;
+    public float musicFadeSpeed = 0.5f;
+    public float musicVolume = 0.8f, panicVolume = 0.8f;
 
     private AlarmLight alarm;
     private Light mainLight;
@@ -77,11 +78,11 @@ public class LastPlayerSighting : MonoBehaviour {
         if (position != resetPosition)
         {
             normalAudio.volume = Mathf.Lerp(normalAudio.volume, 0f, musicFadeSpeed * Time.deltaTime);
-            panicAudio.volume = Mathf.Lerp(panicAudio.volume, 0.8f, musicFadeSpeed * Time.deltaTime);
+            panicAudio.volume = Mathf.Lerp(panicAudio.volume, panicVolume, musicFadeSpeed * Time.deltaTime);
         }
         else
         {
-            normalAudio.volume = Mathf.Lerp(normalAudio.volume, 0.8f, musicFadeSpeed * Time.deltaTime);
+            normalAudio.volume = Mathf.Lerp(normalAudio.volume, musicVolume, musicFadeSpeed * Time.deltaTime);
             panicAudio.volume = Mathf.Lerp(panicAudio.volume, 0f, musicFadeSpeed * Time.deltaTime);
         }
     }

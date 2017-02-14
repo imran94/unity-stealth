@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public AudioClip gameOverClip;
     public float health = 100f;
     public float resetAfterDeathTime = 5f;
     private bool dead = false;
@@ -73,7 +74,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (timer >= resetAfterDeathTime)
         {
-            Debug.Log("Reset");
+            AudioSource.PlayClipAtPoint(gameOverClip, transform.position);
             screenFader.FadeOut(SceneManager.GetActiveScene().buildIndex);
             dead = true;
         }

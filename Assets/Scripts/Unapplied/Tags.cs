@@ -14,4 +14,6 @@ public class Tags {
     public const string pauseMenu = "PauseMenu";
     public const string playerGun = "PlayerGun";
     public const string gunPickup = "GunPickup";
+    public const string soundSlider = "SoundSlider";
+    public const string musicSlider = "MusicSlider";
 }
