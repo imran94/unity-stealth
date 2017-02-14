@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tags : MonoBehaviour {
+public class Tags {
 
     public const string player = "Player";
     public const string alarm = "AlarmLight"; 
@@ -12,4 +12,5 @@ public class Tags : MonoBehaviour {
     public const string enemy = "Enemy";
     public const string gun = "Gun";
     public const string pauseMenu = "PauseMenu";
+    public const string playerGun = "PlayerGun";
 }

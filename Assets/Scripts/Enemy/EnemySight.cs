@@ -24,6 +24,7 @@ public class EnemySight : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         sphereCol = GetComponent<SphereCollider>();
         anim = GetComponent<Animator>();
+
         lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
         hash = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<HashIDs>();
 
@@ -56,6 +57,8 @@ public class EnemySight : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (!enabled) return;
+
         if (other.gameObject == player)
         {
             playerInSight = false;

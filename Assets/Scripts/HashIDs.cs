@@ -4,7 +4,7 @@ using System.Collections;
 public class HashIDs : MonoBehaviour {
 
     public int dyingState, locomotionState, shoutState, weaponShootState;
-    public int deadBool, sneakingBool, shoutingBool, playerInSightBool, openBool, shootingBool;
+    public int deadBool, enemyDeadBool, sneakingBool, shoutingBool, playerInSightBool, openBool, shootingBool;
     public int speedFloat, shotFloat, aimWeightFloat, angularSpeedFloat;
 
     void Awake()
@@ -15,6 +15,7 @@ public class HashIDs : MonoBehaviour {
         weaponShootState = Animator.StringToHash("Shooting.WeaponShoot");
 
         deadBool = Animator.StringToHash("Dead");
+        enemyDeadBool = Animator.StringToHash("EnemyDead");
         sneakingBool = Animator.StringToHash("Sneaking");
         shoutingBool = Animator.StringToHash("Shouting");
         playerInSightBool = Animator.StringToHash("PlayerInSight");

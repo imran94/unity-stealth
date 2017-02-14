@@ -2,29 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour {
+public class PlayerShooting : MonoBehaviour
+{
 
     public AudioClip shotClip;
 
     public float maxDamage = 120f;
     public float minDamage = 45f;
+    public float range = 100f;
 
     public float flashIntensity = 1f;
     public float fadeSpeed = 10f;
+
+    private GameObject gun;
 
     private Animator anim;
     private HashIDs hash;
     private LineRenderer laserShotLine;
     private Light laserShotLight;
+    //private SphereCollider sphereCol;
 
     private bool shooting;
-    private int hashShootingBool;
     private float scaledDamage;
+
+    Ray shootRay;                                   // A ray from the gun end forwards.
+    RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
+    int shootableMask;                              // A layer mask so the raycast only hits things on the shootable layer.
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        //sphereCol = GetComponent<SphereCollider>();
 
+        gun = GameObject.FindGameObjectWithTag(Tags.playerGun);
         laserShotLine = GetComponentInChildren<LineRenderer>();
         laserShotLight = laserShotLine.gameObject.GetComponent<Light>();
         hash = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<HashIDs>();
@@ -33,15 +43,18 @@ public class PlayerShooting : MonoBehaviour {
         laserShotLight.intensity = 0f;
 
         scaledDamage = maxDamage - minDamage;
+
+        shootableMask = LayerMask.GetMask("Shootable");
     }
-	
-	void Update ()
+
+    void Update()
     {
         float shot = anim.GetFloat(hash.shotFloat);
 
         if (Input.GetMouseButtonDown(0) && Time.timeScale == 1 && !shooting)
         {
-            Shoot();
+            shooting = true;
+            anim.SetBool(hash.shootingBool, shooting);
         }
 
         if (shot < 0.5f)
@@ -57,9 +70,11 @@ public class PlayerShooting : MonoBehaviour {
     {
         // Gets hash number of current state in the shooting layer
         int hashState = anim.GetCurrentAnimatorStateInfo(layerIndex).fullPathHash;
+
+        // Player is in shooting animation
         if (hashState == hash.weaponShootState && shooting)
         {
-            ShotEffects();
+            Shoot();
             shooting = false;
             anim.SetBool(hash.shootingBool, shooting);
         }
@@ -71,8 +86,16 @@ public class PlayerShooting : MonoBehaviour {
 
     void Shoot()
     {
-        shooting = true;
-        anim.SetBool(hash.shootingBool, shooting);
+        ShotEffects();
+
+        shootRay.origin = transform.position + Vector3.up;
+        shootRay.direction = transform.forward;
+
+        if (Physics.Raycast(shootRay, out shootHit, range, shootableMask) /*&& shootHit.collider.tag == "Enemy"*/)
+        {
+            //EnemyHealth e = shootHit.collider.GetComponent<EnemyHealth>();
+            shootHit.collider.gameObject.GetComponent<EnemyHealth>().TakeDamage(maxDamage);
+        }
     }
 
     void ShotEffects()
@@ -83,4 +106,11 @@ public class PlayerShooting : MonoBehaviour {
         laserShotLight.intensity = flashIntensity;
         AudioSource.PlayClipAtPoint(shotClip, laserShotLight.transform.position);
     }
+
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.gameObject.ta == player)
+    //    {
+    //    }
+    //}
 }

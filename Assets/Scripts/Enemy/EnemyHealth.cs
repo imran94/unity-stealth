@@ -44,14 +44,14 @@ public class EnemyHealth : MonoBehaviour {
     private void EnemyDying()
     {
         enemyDead = true;
-        anim.SetBool(hash.deadBool, true);
+        anim.SetBool(hash.enemyDeadBool, true);
     }
 
     private void EnemyDead()
     {
         if (anim.GetCurrentAnimatorStateInfo(0).fullPathHash == hash.dyingState)
         {
-            anim.SetBool(hash.deadBool, false);
+            anim.SetBool(hash.enemyDeadBool, false);
         }
 
         anim.SetFloat(hash.speedFloat, 0);
