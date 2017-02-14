@@ -5,17 +5,20 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
     public Text scoreText;
-    private int score;
+    public static int score;
     public GameObject item1;
     public GameObject item2;
     private bool item1Check;
     private bool item2Check;
+    private bool alarmTriggered;
+    private bool alarmCheck;
 
     private void Start()
     {
         score = 0;
         item1Check = false;
         item2Check = false;
+        alarmCheck = false;
         DisplayScore();
     }
 
@@ -34,6 +37,13 @@ public class Score : MonoBehaviour {
             score = score + 5;
             DisplayScore();
             item2Check = true;
+        }
+        alarmTriggered = AlarmLight.alarmStatus;
+        if (alarmTriggered == true && alarmCheck == false)
+        {
+            score -= 10;
+            DisplayScore();
+            alarmCheck = true;
         }
     }
 
