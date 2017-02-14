@@ -5001,6 +5001,48 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 898446465}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &898446467 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114937261631677682, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+    type: 2}
+  m_PrefabInternal: {fileID: 898446465}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &898446468 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114272356971923312, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+    type: 2}
+  m_PrefabInternal: {fileID: 898446465}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &898446469 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114534476503145062, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+    type: 2}
+  m_PrefabInternal: {fileID: 898446465}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &898446470 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114821823766129850, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+    type: 2}
+  m_PrefabInternal: {fileID: 898446465}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &898446471 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114947912360783228, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+    type: 2}
+  m_PrefabInternal: {fileID: 898446465}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &898446472 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114799432026075952, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+    type: 2}
+  m_PrefabInternal: {fileID: 898446465}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &898446473 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114748884574662960, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+    type: 2}
+  m_PrefabInternal: {fileID: 898446465}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &936664459
 Prefab:
   m_ObjectHideFlags: 0
@@ -5816,6 +5858,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1292916981}
+  item1Text: {fileID: 898446473}
+  item2Text: {fileID: 898446472}
+  laser1Text: {fileID: 898446471}
+  laser2Text: {fileID: 898446470}
+  laser3Text: {fileID: 898446469}
+  laser4Text: {fileID: 898446468}
+  alarmText: {fileID: 898446467}
   item1: {fileID: 1778722826}
   item2: {fileID: 106038820}
   laser1: {fileID: 352898815}
