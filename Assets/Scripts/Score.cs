@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
     public Text scoreText;
+    public Text item1Text;
+    public Text item2Text;
+    public Text laser1Text;
+    public Text laser2Text;
+    public Text laser3Text;
+    public Text laser4Text;
+    public Text alarmText;
     public static int score;
     public GameObject item1;
     public GameObject item2;
@@ -40,6 +47,7 @@ public class Score : MonoBehaviour {
             score = score + 5;
             DisplayScore();
             item1Check = true;
+            item1Text.text = "Item 1 --> +5";
         }
 
         if (item2 == null && item2Check == false)
@@ -47,6 +55,7 @@ public class Score : MonoBehaviour {
             score = score + 5;
             DisplayScore();
             item2Check = true;
+            item2Text.text = "Item 2 --> +5";
         }
         alarmTriggered = AlarmLight.alarmStatus;
         if (alarmTriggered == true && alarmCheck == false)
@@ -54,18 +63,21 @@ public class Score : MonoBehaviour {
             score -= 10;
             DisplayScore();
             alarmCheck = true;
+            alarmText.text = "Alarm Triggered --> -10";
         }
         if (laser1.activeInHierarchy == false && laser1Check == false)
         {
             score += 5;
             DisplayScore();
             laser1Check = true;
+            laser1Text.text = "Laser 1 --> +5";
         }
         if (laser2.activeInHierarchy == false && laser2Check == false)
         {
             score += 5;
             DisplayScore();
             laser2Check = true;
+            laser2Text.text = "Laser 2 --> +5";
         }
         if (laser3 != null)
         {
@@ -74,6 +86,7 @@ public class Score : MonoBehaviour {
                 score += 5;
                 DisplayScore();
                 laser3Check = true;
+                laser3Text.text = "Laser 3 --> +5";
             }
         }
         if (laser4 != null)
@@ -83,6 +96,7 @@ public class Score : MonoBehaviour {
                 score += 5;
                 DisplayScore();
                 laser4Check = true;
+                laser4Text.text = "Laser 4 --> +5";
             }
         }
     }
