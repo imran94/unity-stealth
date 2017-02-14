@@ -8,17 +8,18 @@ public class PauseMenu : MonoBehaviour {
     private GameObject menu;
     private AudioSource music;
     private bool musicPlaying;
+    private FadeManager screenFader;
 
-	void Awake()
+    void Awake()
     {
         menu = GameObject.FindGameObjectWithTag(Tags.pauseMenu);
         music = GetComponent<AudioSource>();
         menu.SetActive(false);
         musicPlaying = true;
-        
-	}
-	
-	void Update()
+        screenFader = GameObject.FindGameObjectWithTag(Tags.fader).GetComponent<FadeManager>();
+    }
+
+    void Update()
     {
         if (Input.GetButtonDown("Cancel"))
         {
@@ -48,7 +49,8 @@ public class PauseMenu : MonoBehaviour {
     public void Restart()
     {
         menu.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
+        screenFader.FadeOut(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ToggleMusic()
@@ -75,6 +77,7 @@ public class PauseMenu : MonoBehaviour {
 
     public void Quit()
     {
-        SceneManager.LoadScene(0);
+        menu.SetActive(false);
+        screenFader.FadeOut(0);
     }
 }

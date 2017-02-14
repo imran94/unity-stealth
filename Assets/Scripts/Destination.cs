@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 public class Destination : MonoBehaviour {
 
     private GameObject player;
+    private FadeManager screenFader;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag(Tags.player);
+        screenFader = GameObject.FindGameObjectWithTag(Tags.fader).GetComponent<FadeManager>();
     }
 
-    // Update is called once per frame
-    void Update () {
+    void Update ()
+    {
 		
 	}
 
@@ -21,7 +23,7 @@ public class Destination : MonoBehaviour {
     {
         if (other.gameObject == player)
         {
-            SceneManager.LoadScene(0);
+            screenFader.FadeOut(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

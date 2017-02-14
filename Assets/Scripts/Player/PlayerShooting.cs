@@ -52,9 +52,10 @@ public class PlayerShooting : MonoBehaviour
         float shot = anim.GetFloat(hash.shotFloat);
 
         // Set player animator to shoot
-        if (playerGun.activeSelf && Input.GetMouseButtonDown(0) && Time.timeScale == 1 && !shooting)
+        if (Input.GetMouseButtonDown(0) && Time.timeScale == 1 && !shooting && playerGun.activeSelf)
         {
-            anim.SetBool(hash.shootingBool, true);
+            shooting = true;
+            anim.SetBool(hash.shootingBool, shooting);
         }
 
         laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
@@ -69,7 +70,8 @@ public class PlayerShooting : MonoBehaviour
         if (hashState == hash.weaponShootState && shooting)
         {
             Shoot();
-            anim.SetBool(hash.shootingBool, false);
+            shooting = false;
+            anim.SetBool(hash.shootingBool, shooting);
         }
     }
 
