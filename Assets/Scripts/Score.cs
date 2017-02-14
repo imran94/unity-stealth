@@ -8,10 +8,19 @@ public class Score : MonoBehaviour {
     public static int score;
     public GameObject item1;
     public GameObject item2;
+    public GameObject laser1;
+    public GameObject laser2;
+    public GameObject laser3;
+    public GameObject laser4;
     private bool item1Check;
     private bool item2Check;
     private bool alarmTriggered;
     private bool alarmCheck;
+    private bool laser1Check;
+    private bool laser2Check;
+    private bool laser3Check;
+    private bool laser4Check;
+
 
     private void Start()
     {
@@ -19,6 +28,7 @@ public class Score : MonoBehaviour {
         item1Check = false;
         item2Check = false;
         alarmCheck = false;
+        laser1Check = false;
         DisplayScore();
     }
 
@@ -44,6 +54,36 @@ public class Score : MonoBehaviour {
             score -= 10;
             DisplayScore();
             alarmCheck = true;
+        }
+        if (laser1.activeInHierarchy == false && laser1Check == false)
+        {
+            score += 5;
+            DisplayScore();
+            laser1Check = true;
+        }
+        if (laser2.activeInHierarchy == false && laser2Check == false)
+        {
+            score += 5;
+            DisplayScore();
+            laser2Check = true;
+        }
+        if (laser3 != null)
+        {
+            if (laser3.activeInHierarchy == false && laser3Check == false)
+            {
+                score += 5;
+                DisplayScore();
+                laser3Check = true;
+            }
+        }
+        if (laser4 != null)
+        {
+            if (laser4.activeInHierarchy == false && laser4Check == false)
+            {
+                score += 5;
+                DisplayScore();
+                laser4Check = true;
+            }
         }
     }
 

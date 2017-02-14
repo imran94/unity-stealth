@@ -42,7 +42,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 7
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -71,7 +71,7 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 112000002, guid: 5e07aea39b9f8694cb4b25822c42f69d,
+  m_LightingDataAsset: {fileID: 112000089, guid: 5e07aea39b9f8694cb4b25822c42f69d,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -2846,7 +2846,7 @@ Prefab:
       objectReference: {fileID: 1136390146}
     - target: {fileID: 1914538242798282, guid: 504e7e0eed53aed43a568e14cbcb13ff, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 504e7e0eed53aed43a568e14cbcb13ff, type: 2}
@@ -5040,6 +5040,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114660668628142418, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224216184385867360, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -5133,6 +5138,51 @@ Prefab:
     - target: {fileID: 1504635771684594, guid: 2888bbed527359e4a9ff7793fcd5ad0e, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114719227601693438, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1136390143}
+    - target: {fileID: 114719227601693438, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 114719227601693438, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114660668628142418, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114660668628142418, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114660668628142418, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1136390143}
+    - target: {fileID: 114660668628142418, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 114660668628142418, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114660668628142418, guid: 2888bbed527359e4a9ff7793fcd5ad0e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2888bbed527359e4a9ff7793fcd5ad0e, type: 2}
@@ -6018,6 +6068,10 @@ MonoBehaviour:
   scoreText: {fileID: 1292916981}
   item1: {fileID: 1778722826}
   item2: {fileID: 106038820}
+  laser1: {fileID: 352898815}
+  laser2: {fileID: 318996224}
+  laser3: {fileID: 1196653070}
+  laser4: {fileID: 1141466263}
 --- !u!114 &1136390143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6026,7 +6080,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1136390141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f44fe4f8a3a082c439c590328b8864c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 40c39554221453d43958965ff157d409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1136390146

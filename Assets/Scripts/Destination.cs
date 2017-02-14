@@ -24,10 +24,10 @@ public class Destination : MonoBehaviour {
     {
         if (other.gameObject == player)
         {
-            //SceneManager.LoadScene(0);
             canvas.SetActive(true);
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             score = Score.score;
+            score += 10;
             scoreText.text = "Score: " + score.ToString();
         }
     }

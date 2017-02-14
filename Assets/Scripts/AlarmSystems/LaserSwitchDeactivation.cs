@@ -29,7 +29,6 @@ public class LaserSwitchDeactivation : MonoBehaviour {
     void LaserDeactivation()
     {
         laser.SetActive(false);
-
         screenRend = transform.Find("prop_switchUnit_screen").GetComponent<Renderer>();
         screenRend.material = unlockedMat;
         GetComponent<AudioSource>().Play();
