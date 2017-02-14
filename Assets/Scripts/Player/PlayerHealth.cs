@@ -7,10 +7,12 @@ public class PlayerHealth : MonoBehaviour
 {
     public float health = 100f;
     public float resetAfterDeathTime = 5f;
+    private bool dead = false;
 
     private Animator anim;
     private PlayerMovement playerMovement;
     private HashIDs hash;
+    private FadeManager screenFader;
 
     private LastPlayerSighting lastPlayerSighting;
     private float timer;
@@ -23,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         audioSource = GetComponent<AudioSource>();
         hash = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<HashIDs>();
+        screenFader = GameObject.FindGameObjectWithTag(Tags.fader).GetComponent<FadeManager>();
         lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
     }
 
@@ -64,10 +67,16 @@ public class PlayerHealth : MonoBehaviour
 
     void LevelReset()
     {
+        if (dead) return;
+
         timer += Time.deltaTime;
 
         if (timer >= resetAfterDeathTime)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        {
+            Debug.Log("Reset");
+            screenFader.FadeOut(SceneManager.GetActiveScene().buildIndex);
+            dead = true;
+        }
     }
 
     public void TakeDamage(float amount)

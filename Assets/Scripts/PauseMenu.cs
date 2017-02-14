@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour {
         music = GetComponent<AudioSource>();
         menu.SetActive(false);
         musicPlaying = true;
+        
 	}
 	
 	void Update()
@@ -66,6 +67,11 @@ public class PauseMenu : MonoBehaviour {
             musicPlaying = true;
         }
     }
+
+    public void OnSoundVolumeChanged()
+    {
+        
+    } 
 
     public void Quit()
     {

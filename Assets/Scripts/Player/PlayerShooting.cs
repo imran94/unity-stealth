@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
 
-    public AudioClip shotClip;
+    public AudioClip shotClip, weaponPickUpClip;
 
     public float maxDamage = 120f;
     public float minDamage = 45f;
@@ -20,7 +20,6 @@ public class PlayerShooting : MonoBehaviour
     private HashIDs hash;
     private LineRenderer laserShotLine;
     private Light laserShotLight;
-    //private SphereCollider sphereCol;
 
     private bool shooting;
     private float scaledDamage;
@@ -32,7 +31,6 @@ public class PlayerShooting : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        //sphereCol = GetComponent<SphereCollider>();
 
         playerGun = GameObject.FindGameObjectWithTag(Tags.playerGun);
 
@@ -53,16 +51,10 @@ public class PlayerShooting : MonoBehaviour
     {
         float shot = anim.GetFloat(hash.shotFloat);
 
-        if (Input.GetMouseButtonDown(0) && Time.timeScale == 1 && !shooting && playerGun.activeSelf)
+        // Set player animator to shoot
+        if (playerGun.activeSelf && Input.GetMouseButtonDown(0) && Time.timeScale == 1 && !shooting)
         {
-            shooting = true;
-            anim.SetBool(hash.shootingBool, shooting);
-        }
-
-        if (shot < 0.5f)
-        {
-            //shooting = false;
-            laserShotLine.enabled = false;
+            anim.SetBool(hash.shootingBool, true);
         }
 
         laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
@@ -77,33 +69,29 @@ public class PlayerShooting : MonoBehaviour
         if (hashState == hash.weaponShootState && shooting)
         {
             Shoot();
-            shooting = false;
-            anim.SetBool(hash.shootingBool, shooting);
+            anim.SetBool(hash.shootingBool, false);
         }
-
-        //float aimWeight = anim.GetFloat(hash.aimWeightFloat);
-        //anim.SetIKPosition(AvatarIKGoal.RightHand, transform.up * 1.5f);
-        //anim.SetIKPositionWeight(AvatarIKGoal.RightHand, aimWeight);
     }
 
     void Shoot()
     {
         ShotEffects();
 
+        // Initialize Ray for raycasting
         shootRay.origin = transform.position + Vector3.up;
         shootRay.direction = transform.forward;
 
-        if (Physics.Raycast(shootRay, out shootHit, range, shootableMask) /*&& shootHit.collider.tag == "Enemy"*/)
+        // If object that was raycast has a shootable layer, i.e. is an enemy
+        if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
         {
-            //EnemyHealth e = shootHit.collider.GetComponent<EnemyHealth>();
+            // Kill enemy
             shootHit.collider.gameObject.GetComponent<EnemyHealth>().TakeDamage(maxDamage);
         }
     }
 
     void ShotEffects()
     {
-        //laserShotLine.SetPosition(0, laserShotLine.transform.position);
-        //laserShotLine.SetPosition(1, transform.forward + Vector3.up * 1.5f);
+        // Show visual and audio effects when shooting
         laserShotLine.enabled = true;
         laserShotLight.intensity = flashIntensity;
         AudioSource.PlayClipAtPoint(shotClip, laserShotLight.transform.position);
@@ -111,18 +99,12 @@ public class PlayerShooting : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        // Pick up gun if player walks over it
         if (other.gameObject.tag == Tags.gunPickup)
         {
-            Debug.Log("OnTriggerEnter");
             other.gameObject.SetActive(false);
             playerGun.SetActive(true);
+            AudioSource.PlayClipAtPoint(weaponPickUpClip, transform.position);
         }
     }
-
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if (other.gameObject.ta == player)
-    //    {
-    //    }
-    //}
 }

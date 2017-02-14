@@ -5,22 +5,20 @@ using System.Collections;
 
 public class FadeManager : MonoBehaviour {
 
-    public static FadeManager Instance { set; get; }
+    private bool inTransition, isShowing;
+    private float transition, duration;
 
-    public Image fadeImage;
-
-    private bool inTransition;
-    private float transition;
-    private bool isShowing;
-    private float duration;
+    private bool sceneStarting = true;
+    private int sceneIndex;
 
     public float fadeSpeed = 1.5f;
-    private bool sceneStarting = true;
+    public Image fadeImage;
 
     void Awake()
     {
-        Instance = this;
-        fadeImage = GetComponentInChildren<Image>();
+        fadeImage = gameObject.GetComponent<Image>();
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        FadeIn();
     }
 
     public void Fade(bool showing, float duration)
@@ -33,50 +31,30 @@ public class FadeManager : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Fade(true, 1.25f);
-        }
-
         if (!inTransition) return;
 
         transition += isShowing ? Time.deltaTime * (1 / duration) : -Time.deltaTime * (1 / duration);
         fadeImage.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, transition);
 
         if (transition > 1 || transition < 0)
+        {
             inTransition = false;
+
+            if (transition > 1)
+            {
+                SceneManager.LoadScene(sceneIndex);
+            }
+        }
 	}
 
-    void FadeToClear()
+    public void FadeIn()
     {
-        fadeImage.color = Color.Lerp(fadeImage.color, Color.clear, fadeSpeed * Time.deltaTime);
+        Fade(false, 2f);
     }
 
-    void FadeToBlack()
+    public void FadeOut(int sceneIndex)
     {
-        fadeImage.color = Color.Lerp(fadeImage.color, Color.clear, fadeSpeed * Time.deltaTime);
-    }
-
-    void StartScene()
-    {
-        FadeToClear();
-
-        if (fadeImage.color.a <= 0.05f)
-        {
-            fadeImage.color = Color.clear;
-            fadeImage.enabled = false;
-            sceneStarting = false;
-        }
-    }
-
-    public void EndScene()
-    {
-        fadeImage.enabled = true;
-        FadeToBlack();
-
-        if (fadeImage.color.a >= 0.95f)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        this.sceneIndex = sceneIndex;
+        Fade(true, 2f);
     }
 }
