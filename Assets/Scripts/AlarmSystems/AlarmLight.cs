@@ -13,12 +13,15 @@ public class AlarmLight : MonoBehaviour {
     private Light redLight;
     private float targetIntensity;
 
+    public static bool alarmStatus;
+
     void Awake()
     {
         redLight = GetComponent<Light>();
 
         redLight.intensity = 0f;
         targetIntensity = highIntensity;
+        alarmStatus = false;
     }
 
     void Update()
@@ -27,6 +30,7 @@ public class AlarmLight : MonoBehaviour {
         {
             redLight.intensity = Mathf.Lerp(redLight.intensity, targetIntensity, fadeSpeed * Time.deltaTime);
             checkTargetIntensity();
+            alarmStatus = true;
         }
         else
         {
