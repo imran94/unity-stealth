@@ -3,7 +3,6 @@ using System.Collections;
 
 public class AlarmLight : MonoBehaviour {
 
-    
     public float fadeSpeed = 2f;
     public float highIntensity = 2f;
     public float lowIntensity = 0.5f;
@@ -39,7 +38,6 @@ public class AlarmLight : MonoBehaviour {
         if (Mathf.Abs(targetIntensity - redLight.intensity) < changeMargin)
         {
             targetIntensity = (targetIntensity == highIntensity) ? lowIntensity : highIntensity;
-            Debug.Log("TargetIntensity: " + targetIntensity);
         }
     }
 }

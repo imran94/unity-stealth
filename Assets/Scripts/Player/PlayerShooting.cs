@@ -14,7 +14,7 @@ public class PlayerShooting : MonoBehaviour
     public float flashIntensity = 1f;
     public float fadeSpeed = 10f;
 
-    private GameObject gun;
+    private GameObject playerGun;
 
     private Animator anim;
     private HashIDs hash;
@@ -34,7 +34,8 @@ public class PlayerShooting : MonoBehaviour
         anim = GetComponent<Animator>();
         //sphereCol = GetComponent<SphereCollider>();
 
-        gun = GameObject.FindGameObjectWithTag(Tags.playerGun);
+        playerGun = GameObject.FindGameObjectWithTag(Tags.playerGun);
+
         laserShotLine = GetComponentInChildren<LineRenderer>();
         laserShotLight = laserShotLine.gameObject.GetComponent<Light>();
         hash = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<HashIDs>();
@@ -45,13 +46,14 @@ public class PlayerShooting : MonoBehaviour
         scaledDamage = maxDamage - minDamage;
 
         shootableMask = LayerMask.GetMask("Shootable");
+        playerGun.SetActive(false);
     }
 
     void Update()
     {
         float shot = anim.GetFloat(hash.shotFloat);
 
-        if (Input.GetMouseButtonDown(0) && Time.timeScale == 1 && !shooting)
+        if (Input.GetMouseButtonDown(0) && Time.timeScale == 1 && !shooting && playerGun.activeSelf)
         {
             shooting = true;
             anim.SetBool(hash.shootingBool, shooting);
@@ -105,6 +107,16 @@ public class PlayerShooting : MonoBehaviour
         laserShotLine.enabled = true;
         laserShotLight.intensity = flashIntensity;
         AudioSource.PlayClipAtPoint(shotClip, laserShotLight.transform.position);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == Tags.gunPickup)
+        {
+            Debug.Log("OnTriggerEnter");
+            other.gameObject.SetActive(false);
+            playerGun.SetActive(true);
+        }
     }
 
     //private void OnTriggerStay(Collider other)
